@@ -84,7 +84,7 @@ export async function buildRiskReviewUrl(
         {
             pid: project.projectId,
             issuetype: project.issueTypeId,
-            summary: `[R3TM] ${threat.title}`,
+            summary: `[TM] ${threat.title}`,
             description: riskDescription(threat, false, tmHome),
             labels: 'Design-Issue',
         },
@@ -98,7 +98,7 @@ export async function buildRiskReviewUrl(
     fields.set('Impact Description', threat.impact_desc);
     fields.set('Risk Type', 'Security Risk');
     fields.set('Target Date for Closure', formatJiraDate(treatmentPlanDate(rr)));
-    fields.set('Incident Reported By (if not the person raising the ticket)', 'R3 Threat Model');
+    fields.set('Incident Reported By (if not the person raising the ticket)', 'Threat Model');
     fields.set('Likelihood', '3 - Possible');
 
     for (const [k, v] of Object.entries(extraFields)) {

@@ -1,1 +1,1 @@
-// For build support please contact @corda/blt - build@r3.com
+// For build support, contact the repository maintainers.

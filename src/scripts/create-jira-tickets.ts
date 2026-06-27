@@ -121,7 +121,7 @@ function parseArgs(argv: string[]): CliArgs {
         password,
         dest,
         issueType:  parseOption(argv, 'type') ?? 'Security Bug',
-        tmUri:      parseOption(argv, 'tmUri') ?? process.env.R3TM_HOME ?? 'https://example.com',
+        tmUri:      parseOption(argv, 'tmUri') ?? process.env.TM_HOME ?? 'https://example.com',
         linkPrefix: parseOption(argv, 'linkPrefix'),
         extraFields,
     };
