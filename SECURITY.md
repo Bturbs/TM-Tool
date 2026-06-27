@@ -14,5 +14,5 @@ We'll do our best to provide any security updates whenever they may be reported 
 
 ## Reporting a Vulnerability
 
-Security issues can be reported through our Vulnerability Disclosure Program:
-https://hackerone.com/r3 
+Security issues can be reported through the repository maintainers until a
+dedicated vulnerability disclosure channel is configured.
