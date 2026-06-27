@@ -1,0 +1,76 @@
+name: Publish MkDocs Site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths:
+      - 'threatModels/**/*.yaml'
+      - 'tests/exampleThreatModels/**/*.yaml'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/publish-mkdocs.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install MkDocs
+        run: pip install mkdocs mkdocs-material
+
+      # - name: Install PDF dependencies
+      #   run: |
+      #     sudo apt-get update
+
+      - name: Build MkDocs site + PDFs
+        run: >
+          npm run build:mkdocsSite:withPDF --
+          --TMDirectory tests/exampleThreatModels
+          --MKDocsDir build/mkdocs
+          --MKDocsSiteDir build/site-mkdocs
+          --outputDir build/mkdocs/docs
+          --siteUrl https://corda.github.io/threat-model-tool/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site-mkdocs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

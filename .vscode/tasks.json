@@ -1,0 +1,183 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "label": "Generate all example threat models",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "generate:examples"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate selected example threat model",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "generate:example",
+                "--example=${input:tmExample}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Debug selected example threat model",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "generate:example:debug",
+                "--example=${input:tmExample}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Astro docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "build:astroSite:examples"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Serve Astro docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "serve:astroSite"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Docusaurus docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "build:docusaurusSite:examples"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Serve Docusaurus docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "serve:docusaurusSite"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Hugo docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "build:hugoSite:examples"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Serve Hugo docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "serve:hugoSite"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Build MkDocs docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "build:mkdocsSite:examples"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Serve MkDocs docs site",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "serve:mkdocsSite"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate CordaSolanaToolkit HTML",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "test:build",
+                "--",
+                "/workspaces/threat-modeling/threatModels/CordaSolanaToolkit/CordaSolanaToolkit.yaml",
+                "/workspaces/threat-modeling/build/CordaSolanaToolkit"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        
+    ],
+	"inputs": [
+		{
+			"id": "tmExample",
+			"type": "pickString",
+			"description": "Select the example threat model",
+			"options": [
+				"Example1",
+				"Example2",
+				"FullFeature"
+			]
+		}
+	]
+}

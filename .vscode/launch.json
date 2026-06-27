@@ -1,0 +1,62 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Attach to Makefile Debugger",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Directory fullBuild MKDOCS (html and diagrams/images)",
+            "type": "python",
+            "request": "launch",
+            "module": "r3threatmodeling.fullBuildDirectory",
+            "justMyCode": false,
+            "args": [
+                "--TMDirectory", "tests/exampleThreatModels",
+                // "--browserSync",
+                "--outputDir",
+                "build",
+                "--generatePDF",
+                // "--tempsoeciallylate",
+                // "TM_templateFull",
+                "--formatYAML",
+                // "--assetDir",
+                // "../xxx/threatModels/assets",
+                "--templateSiteFolderSRC", "tests/siteTemplate/mkdocs",
+                "--templateSiteFolderDST", "build/mkdocs/",
+                "--MKDocsSiteDir", "public",
+                "--MKDocsDir", "build/mkdocs"
+            ]
+        },
+
+
+        {
+            "name": "Python: Module for OAuth 2.0 TM",
+            "type": "python",
+            "request": "launch",
+            "module": "r3threatmodeling.report_generator",
+            "justMyCode": false,
+            "args": [
+                "--rootTMYaml",
+                "exampleThreatModel/OAuth2.0.yaml",
+                "--TMID",
+                "OAuth2",
+                "--browserSync",
+                "--outputDir",
+                "build",
+                "--template",
+                "TM_templateFull",
+                "--formatYAML",
+            ]
+        },
+    ]
+}
