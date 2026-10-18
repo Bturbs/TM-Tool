@@ -166,7 +166,7 @@ function writeIndexMarkdown(tmList: StagedTMEntry[], docsDir: string, pdfArtifac
     const sorted = [...tmList].sort((a, b) => (a.title || a.id).localeCompare(b.title || b.id));
     for (const tm of sorted) {
         const links: string[] = [];
-        links.push(`[HTML](${tm.id}/${tm.id}.html)`);
+        links.push(`[HTML](${tm.id}/index.md)`);
         if (tm.hasPdf) {
             links.push(`[PDF](${tm.id}/${tm.id}.pdf)`);
         }
